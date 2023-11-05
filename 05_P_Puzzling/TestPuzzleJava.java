@@ -38,7 +38,6 @@ public class TestPuzzleJava {
 
         System.out.println("Original List: " + randomArray);
 
-        // Shuffle the ArrayList
         generator.shuffleArray(randomArray);
 
         System.out.println("Shuffled List: " + randomArray);
