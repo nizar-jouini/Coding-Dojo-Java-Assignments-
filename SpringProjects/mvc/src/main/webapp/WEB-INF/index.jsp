@@ -22,30 +22,30 @@
 <title>Reading Books</title>
 </head>
 <body>
-	<div class="my-3 d-flex justify-content-center align-items-center">
-		<h1 class="text-center"><c:out value="${book.title}" /></h1>
-	</div>
+	<div class="container">
+		<h1 class="mt-3 mb-5">All Books</h1>
+		<table class="table border border-5 table-hover"
+			style="border-color: #F2B5C1;">
+			<thead>
+				<tr>
+					<th class="text-center">Id</th>
+					<th>Title</th>
+					<th class="text-center">Language</th>
+					<th class="text-center"># Pages</th>
+				</tr>
+			</thead>
+			<tbody>
 
-	<div class="container w-50">
-		<div class="card" style="background-color: #9FC5F8;">
-			<div class="card-body">
-				<h4>
-					Description:
-					<c:out value="${book.description}" />
-				</h4>
-				<h4>
-					Language:
-					<c:out value="${book.language}" />
-				</h4>
-				<h4>
-					Number of Pages:
-					<c:out value="${book.numberOfPages}" />
-				</h4>
-			</div>
-		</div>
-		<div class="my-3 d-flex justify-content-center align-items-center">
-			<a href="/books" class="card-link">Go Back</a>
-		</div>
+				<c:forEach items="${books}" var="book">
+					<tr>
+						<td class="text-center"><c:out value="${book.id}"></c:out></td>
+						<td><a href="/books/${book.id}"><c:out value="${book.title}"></c:out></a></td>
+						<td class="text-center"><c:out value="${book.language}"></c:out></td>
+						<td class="text-center"><c:out value="${book.numberOfPages}"></c:out></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>
