@@ -1,4 +1,4 @@
-package com.nizar.loginregistration.controllers;
+package com.nizar.bookclub.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.nizar.loginregistration.models.LoginUser;
-import com.nizar.loginregistration.models.User;
-import com.nizar.loginregistration.services.UserService;
+import com.nizar.bookclub.models.LoginUser;
+import com.nizar.bookclub.models.User;
+import com.nizar.bookclub.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -46,7 +46,7 @@ public class LoginController {
 		Long userId = (Long) session.getAttribute("user_id");
 		// ROUTE GUARD
 		if (userId == null) {
-			return "redirect:/login";
+			return "login.jsp";
 		} else {
 			User user = userServ.findById(userId);
 			model.addAttribute("user", user);
@@ -86,7 +86,7 @@ public class LoginController {
 		// in other words, log them in.
 		session.setAttribute("user_id", newUser.getId());
 
-		return "redirect:/home";
+		return "redirect:/books";
 	}
 
 	@PostMapping("/login")
@@ -106,7 +106,7 @@ public class LoginController {
 		// in other words, log them in.
 		session.setAttribute("user_id", user.getId());
 
-		return "redirect:/home";
+		return "redirect:/books";
 	}
 
 }
