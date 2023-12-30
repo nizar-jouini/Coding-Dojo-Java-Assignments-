@@ -1,4 +1,4 @@
-package com.nizar.loginregistration.controllers;
+package com.nizar.gameworkshop2.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.nizar.loginregistration.models.LoginUser;
-import com.nizar.loginregistration.models.User;
-import com.nizar.loginregistration.services.UserService;
+import com.nizar.gameworkshop2.models.LoginUser;
+import com.nizar.gameworkshop2.models.User;
+import com.nizar.gameworkshop2.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -51,14 +51,12 @@ public class LoginController {
 		} else {
 			User user = userServ.findById(userId);
 			model.addAttribute("user", user);
-			return "home.jsp";
+			return "redirect:/games";
 		}
 	}
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
-
-//		session.setAttribute("userId", null);
 
 		session.invalidate();
 

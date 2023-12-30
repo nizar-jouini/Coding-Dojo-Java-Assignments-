@@ -52,9 +52,6 @@ public class BookController {
 			List<Book> all_books = bookServ.allBooks();
 			model.addAttribute("books", all_books);
 
-			// GET ALL Authors
-//		List<Author> all_authors = authorServ.allAuthors();
-//		model.addAttribute("all_authors", all_authors);
 			return "Books/home.jsp";
 		}
 
@@ -164,7 +161,7 @@ public class BookController {
 		} else {
 			
 			if (result.hasErrors()) {
-				return "Books/newBook.jsp";
+				return "Books/updateBook.jsp";
 			} else {
 			
 			User user = userServ.findById(userId);
